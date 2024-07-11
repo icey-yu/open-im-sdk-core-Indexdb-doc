@@ -29,6 +29,7 @@ CREATE TABLE `local_groups`
     `apply_member_friend`      integer,
     `notification_update_time` integer,
     `notification_user_id`     text,
+    `display_is_read`          numeric,
     PRIMARY KEY (`group_id`)
 )
 ```
@@ -52,8 +53,8 @@ CREATE TABLE `local_groups`
 INSERT INTO `local_groups` (`group_id`, `name`, `notification`, `introduction`, `face_url`, `create_time`, `status`,
                             `creator_user_id`, `group_type`, `owner_user_id`, `member_count`, `ex`, `attached_info`,
                             `need_verification`, `look_member_info`, `apply_member_friend`, `notification_update_time`,
-                            `notification_user_id`)
-VALUES ("1234567", "测试1234", "", "", "", 1666777417, 0, "", 0, "", 0, "", "", 0, 0, 0, 0, "")
+                            `notification_user_id`, `display_is_read`)
+VALUES ("1234567", "测试1234", "", "", "", 1666777417, 0, "", 0, "", 0, "", "", 0, 0, 0, 0, "", true)
 ```
 
 
@@ -105,7 +106,8 @@ SET `group_id`="1234567",
     `look_member_info`=0,
     `apply_member_friend`=0,
     `notification_update_time`=0,
-    `notification_user_id`=""
+    `notification_user_id`="",
+    `display_is_read`=false
 WHERE `group_id` = "1234567"
 ```
 
@@ -122,8 +124,8 @@ WHERE `group_id` = "1234567"
 
 
 ```sql
-INSERT INTO `local_groups` (`group_id`, `name`, `notification`, `introduction`, `face_url`, `create_time`, `status`, `creator_user_id`, `group_type`, `owner_user_id`, `member_count`, `ex`, `attached_info`, `need_verification`, `look_member_info`, `apply_member_friend`, `notification_update_time`, `notification_user_id`)
-		VALUES("1234567", "测试1234", "", "", "", 1666777417, 0, "", 0, "", 0, "", "", "", 0, 0, 0, 0, ""), ("1234568", "测试5678", "新的通知", "这是一个测试组", "https://example.com/face.png", 1666777420, 1, "user123", 1, "user456", 10, "ex", "Attach", 1, 1, 1, 1666777425, "user789");
+INSERT INTO `local_groups` (`group_id`, `name`, `notification`, `introduction`, `face_url`, `create_time`, `status`, `creator_user_id`, `group_type`, `owner_user_id`, `member_count`, `ex`, `attached_info`, `need_verification`, `look_member_info`, `apply_member_friend`, `notification_update_time`, `notification_user_id`, `display_is_read`)
+		VALUES("1234567", "测试1234", "", "", "", 1666777417, 0, "", 0, "", 0, "", "", "", 0, 0, 0, 0, ""), ("1234568", "测试5678", "新的通知", "这是一个测试组", "https://example.com/face.png", 1666777420, 1, "user123", 1, "user456", 10, "ex", "Attach", 1, 1, 1, 1666777425, "user789", true);
 ```
 
 
