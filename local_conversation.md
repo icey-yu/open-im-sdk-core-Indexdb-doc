@@ -120,7 +120,23 @@ SELECT *
 FROM `local_conversations`
 ```
 
+- findAllUnreadConversationConversationID
 
+**无输入参数**
+
+| 返回参数 | 类型     | 说明               | 备注     |
+| --------- |--------|------------------|--------|
+| errCode | number | 自定义即可，0成功，非0失败   |        |
+| errMsg | string | 详细的err信息         |        |
+| data | string | []ConversationID | 会话ID列表 |
+
+**参考sql语句说明：**
+
+```sqlite
+SELECT conversation_id
+FROM `local_conversations`
+WHERE unread_count > 0
+```
 
 + getAllSingleConversationIDList
 
