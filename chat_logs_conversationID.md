@@ -404,6 +404,7 @@ SELECT * FROM `local_sg_chat_logs_4280368097` WHERE client_msg_id IN ("d9ef1e4e6
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
 | conversationID | string | 会话ID |      |
 | contentType                                     | string | 消息类型列表，为整型数组转换后的string| 
+| senderUserIDList |string| 发送者用户ID列表，为字符串数组转换后的string|
 | keywordList | string | 关键字列表，为字符串数组转换后的string |
 | keywordListMatchType | 0为or匹配, 1为and匹配 |  |
 | startTime | number | 开始时间戳 |
@@ -420,9 +421,8 @@ SELECT * FROM `local_sg_chat_logs_4280368097` WHERE client_msg_id IN ("d9ef1e4e6
 **参考sql语句说明：**
 
 ```sql
- SELECT * FROM `chat_logs_si_7788_7789` WHERE  send_time  between 0 and 1666766907000 AND status <=3  And content_type IN (101,106) And (content like '%1%')  ORDER BY send_time DESC LIMIT 20 OFFSET 0;
+ SELECT * FROM `chat_logs_si_7788_7789` WHERE  send_time  between 0 and 1666766907000 AND status <=3  And content_type IN (101,106) And (content like '%1%') And send_id IN ("123123")  ORDER BY send_time DESC LIMIT 20 OFFSET 0;
 ```
-
 
 
 
@@ -432,6 +432,7 @@ SELECT * FROM `local_sg_chat_logs_4280368097` WHERE client_msg_id IN ("d9ef1e4e6
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
 | conversationID | string | 会话ID |      |
 | contentType                                     | string | 消息类型列表，为整型数组转换后的string|
+| senderUserIDList |string| 发送者用户ID列表，为字符串数组转换后的string|
 | startTime | number | 开始时间戳 |
 | endTime | number | 结束时间戳 |
 | offset | number | 偏移数 | 
@@ -446,7 +447,7 @@ SELECT * FROM `local_sg_chat_logs_4280368097` WHERE client_msg_id IN ("d9ef1e4e6
 **参考sql语句说明：**
 
 ```sql
-SELECT * FROM `chat_logs_si_7788_7789` WHERE send_time between 0 and 1666767929000 AND status <=3 And content_type IN (101,106) ORDER BY send_time DESC LIMIT 20 OFFSET 0;
+SELECT * FROM `chat_logs_sg_3123123637673` WHERE send_time between 0 AND 1730271722000 AND status <= 3 AND content_type IN (105) And send_id IN ("91750") ORDER BY send_time DESC LIMIT 20
 ```
 
 
@@ -458,6 +459,7 @@ SELECT * FROM `chat_logs_si_7788_7789` WHERE send_time between 0 and 16667679290
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
 | conversationID | string | 会话ID |      |
 | contentType                                        | string | 消息类型列表，为整型数组转换后的string|
+| senderUserIDList |string|发送者用户ID列表，为字符串数组转换后的string|
 | keywordList | string | 关键字列表，为字符串数组转换后的string |
 | keywordListMatchType | 0为or匹配, 1为and匹配 |  |
 | startTime | number | 开始时间戳 |
@@ -473,7 +475,7 @@ SELECT * FROM `chat_logs_si_7788_7789` WHERE send_time between 0 and 16667679290
 **参考sql语句说明：**
 
 ```sql
-SELECT * FROM `chat_logs_si_7788_7789` WHERE send_time between 0 and 1666769211000 AND status <=3  And content_type IN (101,106) And (content like '%1%' or content liken '%2%') ORDER BY send_time DESC
+SELECT * FROM `chat_logs_si_7788_7789` WHERE send_time between 0 and 1666769211000 AND status <=3  And content_type IN (101,106) And (content like '%1%' or content liken '%2%') AND send_id IN ("3377881") ORDER BY send_time DESC
 ```
 
 - messageIfExists（暂未使用）
