@@ -205,6 +205,24 @@ BatchUpdateMessageList
  INSERT INTO `local_chat_logs` (`client_msg_id`,`server_msg_id`,`send_id`,`recv_id`,`sender_platform_id`,`sender_nick_name`,`sender_face_url`,`session_type`,`msg_from`,`content_type`,`content`,`is_read`,`status`,`seq`,`send_time`,`create_time`,`attached_info`,`ex`) VALUES ("6edad80249cc0cf626edb88e64f8fb6d","","3045326383","2041671273",1,"Gordon111","ic_avatar_01",1,100,101,"Single chat test3045326383:2041671273:",false,1,0,1663658716992,1663658716992,"","");
 ```
 
+- getMessageByUserID
+
+| 输入参数           | 类型     | 说明    | 备注 |
+|----------------|--------|-------| ---- |
+| conversationID | string | 会话 ID |      |
+| userID         | string | 用户ID  |      |
+
+| 返回参数 | 类型   | 说明                           | 备注                           |
+| -------- | ------ | ------------------------------ | ------------------------------ |
+| errCode  | number | 自定义即可，0成功，非0失败     | 如果获取不到消息也需要返回错误 |
+| errMsg   | string | 详细的err信息                  |                                |
+| data     | string | []LocalChatLog（消息表对象数组数据）| 对象转换成string               |
+
+参考 SQL 语句说明：
+
+```sql
+SELECT * FROM `chat_logs_si_7788_7789` WHERE user_id = "1552662" LIMIT 1;
+```
 
 - getMultipleMessage
 
